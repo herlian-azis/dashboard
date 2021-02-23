@@ -1,0 +1,7 @@
+export {default as Dashboard } from './Dashboard'
+export {default as DataUmkm } from './DataUmkm'
+export {default as AnalisaBisnis } from './AnalisaBisnis'
+export {default as AnalisaMenchatat } from './AnalisaMenchatat'
+export {default as DataVoucher } from './DataVoucher'
+export {default as Setting } from './Setting'
+export {default as Login } from './Login'
