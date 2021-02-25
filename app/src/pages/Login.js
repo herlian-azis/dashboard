@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
@@ -35,7 +35,7 @@ const LoginHead = styled.div`
     border-left: 4px solid #f6bd3d
   `
 
-const FormLoginGroub = styled.div`
+const FormLoginGroub = styled.form`
 display: flex;
 flex-wrap: wrap;
 `
@@ -127,74 +127,80 @@ margin-bottom: 20px;
     border-color: #15498d;
   }`
 
-function Login() {
-    return (
-        <div>
-            <LoginWrapper>
-                <LoginWrapper2>
-                    <LoginCard>
-                        <LoginHead>
-                            <h3> silahkan login dahulu</h3>
-                        </LoginHead>
-                        <FormLoginGroub>
-                            <FormLabel>
-                                E-mail
+const Login = () => {
+  const [input, setInput] = useState({
+    email: "",
+    password: ""
+  })
+  const onChange = (e) =>{
+    let { name, value } = e.target
+    
+    const dataInput  = { ...input , [name]:value}
+    setInput(dataInput)
+  }
+
+  return (
+    <div>
+      <LoginWrapper>
+        <LoginWrapper2>
+          <LoginCard>
+            <LoginHead>
+              <h3> silahkan login dahulu</h3>
+            </LoginHead>
+            <FormLoginGroub>
+              <FormLabel>
+                E-mail
                             </FormLabel>
+              {/* Email form */}
+              <FormField>
+                {/* /icons */}
+                <Icons>
+                  <IconsEmail />
+                </Icons>
+                {/* input */}
+                <FormLogin>
+                  <Input onChange={onChange} name="email" type="text" placeholder="E-mail" />
+                </FormLogin>
+              </FormField>
+              {/* password form */}
+              <FormLabel>
+                Password
+              </FormLabel>
+              {/* password Form */}
+              <FormField>
+                {/* /icons */}
+                <Icons>
+                  <IconsPassword />
+                </Icons>
+                {/* input */}
+                <FormLogin>
+                  <PasswordInput onChange={onChange} name="password" type="password" placeholder="Password" />
+                </FormLogin>
 
-                            {/* Email form */}
-                            <FormField>
-                                {/* /icons */}
-                                <Icons>
-                                    <IconsEmail />
-                                </Icons>
-                                {/* input */}
-                                <FormLogin>
-                                    <Input name="email" type="text" placeholder="E-mail" />
-                                </FormLogin>
-                            </FormField>
+                <PositionButton>
 
+                  <Icons>
+                    <IconsSeePassword />
 
-                            {/* password form */}
-                            <FormLabel>
-                                Password
-                            </FormLabel>
-
-                            {/* password Form */}
-                            <FormField>
-                                {/* /icons */}
-                                <Icons>
-                                    <IconsPassword />
-
-                                </Icons>
-                                {/* input */}
-                                <FormLogin>
-                                    <PasswordInput name="password" type="password" placeholder="Password" />
-                                </FormLogin>
-
-                                <PositionButton>
-
-                                    <Icons>
-                                        <IconsSeePassword />
-
-                                    </Icons>
-                                </PositionButton>
-                            </FormField>
-                            <ForgotButton>
-                            Forgot a password?
-                            </ForgotButton>
+                  </Icons>
+                </PositionButton>
+              </FormField>
+              {/* <ForgotButton>
+                Forgot a password?
+                            </ForgotButton> */}
 
 
 
-                        </FormLoginGroub>
-                <ButtonLogin className="primary"> Sign In</ButtonLogin>
-                    </LoginCard>
-                        
+            </FormLoginGroub>
+            <ButtonLogin className="primary"> Sign In</ButtonLogin>
+          </LoginCard>
 
-                </LoginWrapper2>
 
-            </LoginWrapper>
-        </div>
-    )
+        </LoginWrapper2>
+
+      </LoginWrapper>
+    </div>
+  )
 }
 
 export default Login

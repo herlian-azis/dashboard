@@ -10,6 +10,7 @@ import {
   Setting,
   Login
 } from './pages'
+import Toast from './pages/Toast'
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/data-voucher" component={DataVoucher}/>
         <Route exact path="/setting" component={Setting}/> */}
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/toast" component={Toast}/>
       </Switch>
     </Router>
   );
