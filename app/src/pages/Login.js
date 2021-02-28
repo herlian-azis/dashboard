@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -127,27 +129,68 @@ margin-bottom: 20px;
     border-color: #15498d;
   }`
 
+
 const Login = () => {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer chatatID498327b5-b36d-48cc-82ef-975f13658eb0");
+  myHeaders.append("Content-Type", "application/json");
+
   const [input, setInput] = useState({
     email: "",
     password: ""
   })
-  const onChange = (e) =>{
+
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+
+  const onChange = (e) => {
     let { name, value } = e.target
-    
-    const dataInput  = { ...input , [name]:value}
+
+    const dataInput = { ...input, [name]: value }
     setInput(dataInput)
   }
 
+  const goSubmit = (e) => {
+    e.preventDefault()
+    var raw = JSON.stringify(input);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://azaradigital.com/service/sysBack/admin/login", requestOptions)
+      .then(response => response.text())
+      .then((result) => {
+        // if (condition) {
+
+        // }
+        toast.error("email atau password salah");
+        console.log(result.data)
+      })
+      .catch(error => {
+        console.log('error', error)
+      });
+  }
+
+
+
   return (
     <div>
+      <ToastContainer />
+
       <LoginWrapper>
         <LoginWrapper2>
           <LoginCard>
             <LoginHead>
               <h3> silahkan login dahulu</h3>
             </LoginHead>
-            <FormLoginGroub>
+            <FormLoginGroub onSubmit={(e) => goSubmit(e)}>
               <FormLabel>
                 E-mail
                             </FormLabel>
@@ -159,7 +202,7 @@ const Login = () => {
                 </Icons>
                 {/* input */}
                 <FormLogin>
-                  <Input onChange={onChange} name="email" type="text" placeholder="E-mail" />
+                  <Input onChange={onChange} name="email" type="email" placeholder="E-mail" />
                 </FormLogin>
               </FormField>
               {/* password form */}
@@ -174,13 +217,13 @@ const Login = () => {
                 </Icons>
                 {/* input */}
                 <FormLogin>
-                  <PasswordInput onChange={onChange} name="password" type="password" placeholder="Password" />
+                  <PasswordInput onChange={onChange} name="password" type={passwordShown ? "text" : "password"} placeholder="Password" />
                 </FormLogin>
 
                 <PositionButton>
 
                   <Icons>
-                    <IconsSeePassword />
+                    <IconsSeePassword onClick={togglePasswordVisiblity} />
 
                   </Icons>
                 </PositionButton>
@@ -191,11 +234,9 @@ const Login = () => {
 
 
 
+              <ButtonLogin className="primary"> Sign In</ButtonLogin>
             </FormLoginGroub>
-            <ButtonLogin className="primary"> Sign In</ButtonLogin>
           </LoginCard>
-
-
         </LoginWrapper2>
 
       </LoginWrapper>
