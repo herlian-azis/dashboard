@@ -11,21 +11,23 @@ import {
   Login
 } from './pages'
 import Toast from './pages/Toast'
-function App() {
+const App = () => {
   return (
+    // <Provider store={store}>
     <Router>
-      {/* <Sidebar /> */}
+      <Sidebar />
       <Switch>
-        {/* <Route exact path="/dashboard" component={Dashboard}/>
-        <Route exact path="/data-umkm" component={DataUmkm}/>
-        <Route exact path="/analisa-bisnis" component={AnalisaBisnis}/>
-        <Route exact path="/analisa-menchatat" component={AnalisaMenchatat}/>
-        <Route exact path="/data-voucher" component={DataVoucher}/>
-        <Route exact path="/setting" component={Setting}/> */}
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/toast" component={Toast}/>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/data-umkm" component={DataUmkm} />
+        <Route exact path="/analisa-bisnis" component={AnalisaBisnis} />
+        <Route exact path="/analisa-menchatat" component={AnalisaMenchatat} />
+        <Route exact path="/data-voucher" component={DataVoucher} />
+        <Route exact path="/setting" component={Setting} />
+        {/* <Route exact path="/toast" component={Toast} /> */}
       </Switch>
     </Router>
+    // </Provider>
   );
 }
 

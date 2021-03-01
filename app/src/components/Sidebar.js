@@ -24,15 +24,14 @@ const NavIcon = styled(Link)`
 
 const SidebarNav = styled.nav`
     background: #0070FB;
-    width: 250px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
     position: fixed;
+    left: 0;
     top: 0;
-    left: 0vh;
-    transition: 350ms;
-    z-index: 10;
+    bottom: 0;
+    width: 16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const SidebarWrap = styled.div`

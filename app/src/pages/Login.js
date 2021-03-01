@@ -4,7 +4,9 @@ import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom';
 
+import axios from 'axios'
 
 
 
@@ -122,16 +124,24 @@ padding: 10px 25px;
 margin-bottom: 20px;
   cursor: pointer;
   width: 100%;
+  border: none;
+  outline: none;
 
-  &.primary {
     color: #fff;
     background: #15498d;
     border-color: #15498d;
-  }`
+    &:hover{
+      background: #0e3261;
+      cursor: pointer;
+  }
+  
+  `
 
 
 const Login = () => {
+  const history = useHistory()
   var myHeaders = new Headers();
+
   myHeaders.append("Authorization", "Bearer chatatID498327b5-b36d-48cc-82ef-975f13658eb0");
   myHeaders.append("Content-Type", "application/json");
 
@@ -141,6 +151,8 @@ const Login = () => {
   })
 
   const [passwordShown, setPasswordShown] = useState(false);
+  const [alert, setAlert] = useState(false)
+  const [msg, setMsg] = useState("")
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -155,26 +167,33 @@ const Login = () => {
 
   const goSubmit = (e) => {
     e.preventDefault()
-    var raw = JSON.stringify(input);
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
+    var config = {
+      method: 'post',
+      url: 'https://azaradigital.com/service/sysBack/admin/login',
+      headers: {
+        'Authorization': 'Bearer chatatID498327b5-b36d-48cc-82ef-975f13658eb0',
+        'Content-Type': 'application/json'
+      },
+      data: input
     };
 
-    fetch("https://azaradigital.com/service/sysBack/admin/login", requestOptions)
-      .then(response => response.text())
-      .then((result) => {
-        // if (condition) {
-
-        // }
-        toast.error("email atau password salah");
-        console.log(result.data)
+    axios(config)
+      .then((response) => {
+        localStorage.setItem('auth', response.data.data.auth)
+        localStorage.setItem('email', response.data.data.email)
+        history.push(`/dashboard`)
       })
-      .catch(error => {
-        console.log('error', error)
+      .catch((error) => {
+        setAlert(false)
+        setMsg("")
+        setAlert(true)
+        if (error.response.data.message != undefined) {
+          setMsg(error.response.data.message);
+        } else if (error.response.data.password) {
+          setMsg(error.response.data.password.toString());
+        } else if (error.response.data.email != undefined)
+          setMsg(error.response.data.email[0]);
       });
   }
 
@@ -182,14 +201,15 @@ const Login = () => {
 
   return (
     <div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
 
       <LoginWrapper>
         <LoginWrapper2>
           <LoginCard>
             <LoginHead>
-              <h3> silahkan login dahulu</h3>
+              <h2> silahkan login dahulu</h2>
             </LoginHead>
+              {alert && <h4 style={{color: "red"}} >  {msg}</h4>}
             <FormLoginGroub onSubmit={(e) => goSubmit(e)}>
               <FormLabel>
                 E-mail
@@ -213,7 +233,7 @@ const Login = () => {
               <FormField>
                 {/* /icons */}
                 <Icons>
-                  <IconsPassword />
+                  <IconsPassword edge="end" />
                 </Icons>
                 {/* input */}
                 <FormLogin>
@@ -228,9 +248,9 @@ const Login = () => {
                   </Icons>
                 </PositionButton>
               </FormField>
-              {/* <ForgotButton>
+              <ForgotButton>
                 Forgot a password?
-                            </ForgotButton> */}
+                            </ForgotButton>
 
 
 
