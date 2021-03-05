@@ -10,13 +10,18 @@ import {
   Setting,
   Login
 } from './pages'
+import Search from './components/Search'
+import Calender from './components/Calender'
+
 import Toast from './pages/Toast'
 const App = () => {
   return (
     // <Provider store={store}>
     <Router>
+      <Search/>
       <Sidebar />
       <Switch>
+
         <Route exact path="/" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/data-umkm" component={DataUmkm} />
@@ -25,6 +30,7 @@ const App = () => {
         <Route exact path="/data-voucher" component={DataVoucher} />
         <Route exact path="/setting" component={Setting} />
         {/* <Route exact path="/toast" component={Toast} /> */}
+        {/* <Route exact path="/calender" component={Calender} /> */}
       </Switch>
     </Router>
     // </Provider>

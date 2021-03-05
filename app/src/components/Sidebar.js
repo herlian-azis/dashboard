@@ -36,6 +36,12 @@ const SidebarNav = styled.nav`
 
 const SidebarWrap = styled.div`
     width: 100%;
+    margin-top: 108px
+`
+const P = styled.p`
+color: white;
+margin-left:1rem
+
 `
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false)
@@ -48,7 +54,7 @@ function Sidebar() {
             </Nav>
             <SidebarNav sidebar={sidebar}>
                 <SidebarWrap>
-               <h1>  main menu</h1>
+               <P>  main menu</P>
                     {SidebarData.map((item,index) =>{
                         return <SubMenu item={item} key={index}/>
                     })}

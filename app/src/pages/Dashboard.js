@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from "styled-components";
 import CardItem from '../components/CardItem'
+import Search from '../components/Search'
+import Calender from '../components/Calender'
 
 
 const Container = styled.div`
@@ -17,26 +19,51 @@ const Col = styled.div`
   );
   grid-gap: 10px;
 `;
+
+const Title = styled.div`
+border-bottom: 1px solid grey
+`
+const TitleWrap = styled.div`
+display: flex;
+justify-content: space-between;
+
+`
+
+const P = styled.p`
+margin: 2px 1px;
+`
 const Dashboard = () => {
 
 
     return (
-        <Container>
-            <Col col="3">
+        <>
+            <Container>
+                <TitleWrap>
+                    <p>
 
-                <CardItem >s</CardItem>
-                <CardItem>d</CardItem>
-                <CardItem color="#FFCB2B" >
-                    <h4> 522
-                </h4></CardItem>
-                <CardItem></CardItem>
-                <CardItem>s</CardItem>
-                <CardItem color="#FFCB2B">d</CardItem>
-                <CardItem>dasdas</CardItem>
-                <CardItem></CardItem>
-                <CardItem></CardItem>
-            </Col>
-        </Container>
+                    Dashboard
+                    </p>
+                    <Calender/>
+                </TitleWrap>
+            <Title/>
+                <Col col="3">
+
+                    <CardItem >s</CardItem>
+                    <CardItem>d</CardItem>
+                    <CardItem color="#FFCB2B" >
+                        <P> 522
+                </P>
+                        <P>
+                            Umkm Tidak Aktif</P></CardItem>
+                    <CardItem></CardItem>
+                    <CardItem>s</CardItem>
+                    <CardItem color="#FFCB2B">d</CardItem>
+                    <CardItem>dasdas</CardItem>
+                    <CardItem></CardItem>
+                    <CardItem></CardItem>
+                </Col>
+            </Container>
+        </>
     )
 }
 

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 
@@ -201,7 +200,6 @@ const Login = () => {
 
   return (
     <div>
-      {/* <ToastContainer /> */}
 
       <LoginWrapper>
         <LoginWrapper2>

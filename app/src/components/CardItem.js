@@ -8,10 +8,18 @@ const  Card = styled.div`
     margin: 1rem
 
 `
+const Container = styled.div`
+margin: 0px 1px;
+`
 const CardItem = ({color,children})=>{
     return(
         <>
-    <Card color={color}>{children} </Card>
+    <Card color={color}> 
+    <Container>
+
+     {children} 
+    </Container>
+     </Card>
 
         </>
     )
