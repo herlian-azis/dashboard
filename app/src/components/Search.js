@@ -1,19 +1,57 @@
 import React from 'react'
 import styled from 'styled-components'
+import {AiOutlineDown } from 'react-icons/ai'
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import Logo from '../image/ChatatLogo.svg'
 
 const Box = styled.div`
 width: auto;
 
-height: 50px;
+height: 65px;
 box-shadow: 1px 1px 10px grey;
-color: red;
 margin-bottom: 1vh;
 margin-left: 257px;
+`
+const FlexContainer = styled.div`
+display: flex;
+justify-content: flex-end;
+align-items: center;
+height: 65px;
+padding: 20px
+`
+const Input = styled.input`
+width: 200px;
+margin: 0 2rem;
+border-radius: 10px;
+list-style: none;
+outline: none;
+border: 1px solid grey;
+`
+
+const AppLogo = styled.img`
+width: 9rem;
+`
+const P = styled.p`
+margin: 2px 4px;
 `
 
 const search=()=> {
     return (
-     <Box></Box>
+     <Box>
+         <FlexContainer>
+
+             <P>Powered By</P>
+             <AppLogo src={Logo} alt="Logo" />
+            <Input placeholder="Cari Data UMKM" />
+         <Avatar  icon={<UserOutlined />} />
+         <div>
+
+             <AiOutlineDown/>
+         </div>
+         </FlexContainer>
+         
+         </Box>
     )
 }
 

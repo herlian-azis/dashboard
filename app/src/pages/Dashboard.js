@@ -5,13 +5,13 @@ import Search from '../components/Search'
 import Calender from '../components/Calender'
 
 
-const Container = styled.div`
+const Wrap = styled.div`
 width: auto;
 margin-left: 16rem;
 position: relative;
 padding: 0 4rem;
 `;
-const Col = styled.div`
+const Column = styled.div`
   display: grid;
   grid-template-columns: repeat(
     ${(props) => (props.col ? props.col : "1")},
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <Container>
+            <Wrap>
                 <TitleWrap>
                     <p>
 
@@ -46,7 +46,7 @@ const Dashboard = () => {
                     <Calender/>
                 </TitleWrap>
             <Title/>
-                <Col col="3">
+                <Column col="3">
 
                     <CardItem >s</CardItem>
                     <CardItem>d</CardItem>
@@ -61,8 +61,8 @@ const Dashboard = () => {
                     <CardItem>dasdas</CardItem>
                     <CardItem></CardItem>
                     <CardItem></CardItem>
-                </Col>
-            </Container>
+                </Column>
+            </Wrap>
         </>
     )
 }

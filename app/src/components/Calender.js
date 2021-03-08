@@ -30,9 +30,10 @@ const Calender = () => {
     
 }
 const time =(d ) =>{
-    console.log(new Date(d[0]._d).getTime())
-    console.log(d[0]._d)
-    console.log(d[1]._d)
+    // console.log(new Date(d[0]._d).getTime())
+    // console.log(d[0]._d)
+    // console.log(d[1]._d)
+     
 }
     return (
         <div>

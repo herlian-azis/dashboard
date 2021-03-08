@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
-import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 
 import axios from 'axios'

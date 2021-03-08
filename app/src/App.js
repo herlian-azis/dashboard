@@ -11,15 +11,30 @@ import {
   Login
 } from './pages'
 import Search from './components/Search'
-import Calender from './components/Calender'
 
-import Toast from './pages/Toast'
 const App = () => {
+
+  const loginCheck = () => {
+    if (localStorage.getItem("auth")) {
+      console.log("masook")
+      return (
+        <>
+         <Search />
+      <Sidebar />
+        </>
+      )
+    }
+  }
   return (
     // <Provider store={store}>
     <Router>
-      <Search/>
+     {/* {loginCheck()} */}
+    { localStorage.getItem("auth") ?
+    <>
+     <Search />
       <Sidebar />
+      
+    </> : null}
       <Switch>
 
         <Route exact path="/" component={Login} />
