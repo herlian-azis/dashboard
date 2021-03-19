@@ -1,125 +1,63 @@
 import React from 'react'
-import styled from 'styled-components'
-const Wrap = styled.div`
-width: auto;
-margin-left: 16rem;
-position: relative;
-padding: 0 4rem;
+import { Row, Col, Card, Layout } from 'antd';
 
-`;
 
-const Box = styled.div`
-height: 744px;
-width: auto;
-box-shadow: -2px 12px 12px -6px rgba(0,0,0,0.5);
-margin-bottom: 12rem;
-`
+// const TableList = () =>{
+//     return ()
+// }
 
-const TitleFlex = styled.div`
-display: flex;
-justify-content: space-between
-`
 
-const Table = styled.div`
-border: 1px solid
-`
+
 const Setting = () => {
-    return (
-        <Wrap>
-            <Box>
-                <TitleFlex>
-                    <TitleFlex>
+  return (
+    <Layout>
+      <Card style={{ padding: '10px' }}>
 
-                        <h1>
-                            settingsa
-            </h1>
-                        <h1>
-                            settingsafdsffd
-            </h1>
-                    </TitleFlex>
-                    <h1>dasd</h1>
+        <Row>
+          <Row>
+            <Col></Col>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card style={{ width: '500px' }}>
+                <div >
+                  <h1 style={{ padding: '10px 40px' }}>Harta</h1>
+                  <div style={{ padding: '10px 40px' }}>
+                    kas
+              </div>
+                  <div>
+                    <Row style={{ width: '100%', backgroundColor: "#F9FAFB", padding: '10px 40px' }} justify={'space-between'}>
+                      <Col >Kas kecil</Col>
+                      <Col>5000000000</Col>
+                    </Row>
+                    <Row style={{ width: '100%', backgroundColor: "#F9FAFB", padding: '10px 40px' }} justify={'space-between'}>
+                      <Col >Total Kas</Col>
+                      <Col>5000000000</Col>
+                    </Row>
 
-                </TitleFlex>
-                <TitleFlex>
+                  </div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </Card >
+            </Col>
+            <Col>
+              <Card style={{ width: '500px' }}></Card>
+            </Col>
+          </Row>
+        </Row>
+      </Card>
 
-                <Table>
-                    <p>Harta</p>
-                    <tr>
-                        <td>kas</td>
-                        <td>kas kecil</td>
-                        <th>Total Kas</th>
-                    </tr>
-                    <tr>
-                        <td>piutang</td>
-                        <th>Total piutang</th>
-                    </tr>
-                    <tr>
-                        <td>persedian</td>
-                        <th>Total persedian</th>
-                    </tr>
-                    <tr>
-                        <td>perlatan</td>
-                        <td>Akumulasi Depersiasi Perlatan</td>
-                        <th>Total Peralatan</th>
-                    </tr>
-                    <tr>
-                        <td>Kendaraan</td>
-                        <td>Akumulasi Depersiasi Kendaraan</td>
-                        <th>Total Kendaraan</th>
-                    </tr>
-                    <tr>
-                        <td>Properti</td>
-                        <td>Akumulasi Depersiasi Properti</td>
-                        <th>Total Properti</th>
-                    </tr>
-                    <tr>
-                       
-                        <th>Total Harta</th>
-                    </tr>
+    </Layout>
 
-                </Table>
-                <Table>
-                    <p>Harta</p>
-                    <tr>
-                        <td>kas</td>
-                        <td>kas kecil</td>
-                        <th>Total Kas</th>
-                    </tr>
-                    <tr>
-                        <td>piutang</td>
-                        <th>Total piutang</th>
-                    </tr>
-                    <tr>
-                        <td>persedian</td>
-                        <th>Total persedian</th>
-                    </tr>
-                    <tr>
-                        <td>perlatan</td>
-                        <td>Akumulasi Depersiasi Perlatan</td>
-                        <th>Total Peralatan</th>
-                    </tr>
-                    <tr>
-                        <td>Kendaraan</td>
-                        <td>Akumulasi Depersiasi Kendaraan</td>
-                        <th>Total Kendaraan</th>
-                    </tr>
-                    <tr>
-                        <td>Properti</td>
-                        <td>Akumulasi Depersiasi Properti</td>
-                        <th>Total Properti</th>
-                    </tr>
-                    <tr>
-                       
-                        <th>Total Harta</th>
-                    </tr>
 
-                </Table>
-                </TitleFlex>
-
-            </Box>
-
-        </Wrap>
-    )
+  )
 }
 
 export default Setting

@@ -1,7 +1,15 @@
-
-import { Option } from 'antd/lib/mentions';
-import React, { useState, useEffect, useRef } from 'react';
-import { Line , defaults} from 'react-chartjs-2';
+import {
+    Option
+} from 'antd/lib/mentions';
+import React, {
+    useState,
+    useEffect,
+    useRef
+} from 'react';
+import {
+    Line,
+    defaults
+} from 'react-chartjs-2';
 import styled from "styled-components";
 defaults.global.legend.align = 'start'
 // defaults.global.legend.labels.boxWidth = 20
@@ -28,7 +36,7 @@ const datasetState = [{
     pointHoverBorderWidth: 2,
     pointHitRadius: 10,
     data: [65, 59, 80, 81, 56, 55, 40],
- 
+
 }];
 
 function Graph() {
@@ -58,36 +66,42 @@ function Graph() {
         };
     }, []);
 
-    return (
-        <Line data={{ labels, datasets }} />
+    return ( <
+        Line data = {
+            {
+                labels,
+                datasets
+            }
+        }
+        />
     );
 }
 
-const Wrap = styled.div`
+const Wrap = styled.div `
 width: auto;
 margin-left: 16rem;
 position: relative;
 padding: 0 4rem;
 `;
 
-const Box = styled.div`
+const Box = styled.div `
 width: 70rem;
 border: 1px solid;
 margin-right: 10px;
 padding: 20px 10px 20px 30px
 `
-const Box2 = styled.div`
+const Box2 = styled.div `
 width: 35rem;
 border: 1px solid;
 margin-right: 10px;
 padding: 10px 10px 10px 10px
 
 `
-const FlexWrap = styled.div`
+const FlexWrap = styled.div `
 display: flex;
 `
 
-const Table = styled.table`
+const Table = styled.table `
 &&& {
     table,
     th,
@@ -109,11 +123,11 @@ const Table = styled.table`
     }
   }
 `
-const WrapUl= styled.div`
+const WrapUl = styled.div `
 display: flex;
 justify-content: flex-start
 `
-const UlStyle= styled.ul`
+const UlStyle = styled.ul `
 list-style-type: none;
 
 li:before { 
@@ -128,85 +142,84 @@ li:before {
     width: 5px;
   }
 `
-const P1 = styled.p`
+const P1 = styled.p `
 margin: 0px 0px 0px 0px
 `
-const P = styled.p`
+const P = styled.p `
 margin: 7px 0px 0px 14px
 `
-const H3 = styled.h3`
+const H3 = styled.h3 `
 margin-left: 20px
 `
-const H1 = styled.h1`
+const H1 = styled.h1 `
 margin: 0px
 `
 
 
 const DataVoucher = () => {
-    return (
-        <>
-            <Wrap>
-                DataVoucher
-            <FlexWrap>
-                    <Box>
-                        {/* <div style={{marginLeft:'4rem'}}> */}
+    return ( <
+        >
+        <
+        Wrap > {
+            /* DataVoucher
+                        <FlexWrap>
+                                <Box>
 
-                       <H1>Sales / Omset Overview</H1>
-                       <P1>Grafik pergerakan omset usaha</P1>
-                        {/* </div> */}
-                        <Graph />
-                    </Box>
-                    <Box2>
-                           <UlStyle>
-                        <WrapUl>
-                            <div>
+                                    <H1>Sales / Omset Overview</H1>
+                                    <P1>Grafik pergerakan omset usaha</P1>
+                                    <Graph />
+                                </Box>
+                                <Box2>
+                                    <UlStyle>
+                                        <WrapUl>
+                                            <div>
+                                                <li>
+                                                    Total Sales
+                                           </li>
+                                                <P>
+                                                    IDR 95.000.000
+                                           </P>
+                                            </div>
+                                            <div>
 
-                               <li>
-                                   Total Sales
-                               </li>
-                               <P>
-                                   IDR 95.000.000
-                               </P>
-                            </div>
-                            <div>
+                                                <li>
+                                                    Number Of Transaction
+                                           </li>
+                                                <P>
+                                                    94
+                                           </P>
+                                            </div>
+                                        </WrapUl>
+                                    </UlStyle>`
+                                    <H3>Top 3 Product Sales</H3>
+                                    <Table>
+                                        <tr>
+                                            <th>product</th>
+                                            <th>sales</th>
+                                            <th>transaction</th>
+                                        </tr>
+                                        <tr>
+                                            <td>paket Basic</td>
+                                            <td>38.000</td>
+                                            <td>38 </td>
 
-                               <li>
-                                   Number Of Transaction
-                               </li>
-                               <P>
-                                   94
-                               </P>
-                            </div>
-                        </WrapUl>
-                           </UlStyle>
-                           <H3>Top 3 Product Sales</H3>
-                        <Table>
-                            <tr>
-                                <th>product</th>
-                                <th>sales</th>
-                                <th>transaction</th>
-                            </tr>
-                            <tr>
-                                <td>paket Basic</td>
-                                <td>38.000</td>
-                                <td>38 </td>
-
-                            </tr>
-                            <tr>
-                                <td>paket Basic</td>
-                                <td> 8.000.000</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>paket Premium</td>
-                                <td> 8.000.000 </td>
-                                <td> 38</td>
-                            </tr>
-                        </Table>
-                    </Box2>
-                </FlexWrap>
-            </Wrap>
-        </>
+                                        </tr>
+                                        <tr>
+                                            <td>paket Basic</td>
+                                            <td> 8.000.000</td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paket Premium</td>
+                                            <td> 8.000.000 </td>
+                                            <td> 38</td>
+                                        </tr>
+                                    </Table>
+                                </Box2>
+                            </FlexWrap> */
+        } <
+        /Wrap> <
+        />
     )
 }
 

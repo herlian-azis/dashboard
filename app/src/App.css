@@ -32,7 +32,24 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.ant-menu-item-selected {
+  background-color: #FFCB05 !important;
+  color: #002F79 !important;
+}
+
+.ant-menu-item-active {
+  background-color: #FFCB05 !important;
+  color: #002F79 !important;
+
+}
+
+.ant-menu-inline .ant-menu-item::after {
+  border-right: 0 !important;
+
 }
