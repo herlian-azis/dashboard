@@ -5,10 +5,11 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import {SidebarData} from './SidebarData'
 import SubMenu from './SubMenu'
+import MandiriLogo from '../image/Mandiri_logo.svg'
 
 const Nav = styled.div`
     background: white;
-    height: 80px;
+    height: 40px;
     justify-content: flex-start;
     align-items: center;
 `
@@ -43,6 +44,13 @@ color: white;
 margin-left:1rem
 
 `
+
+const AppLogo = styled.img`
+width: 10rem;
+margin-top: 20px
+`
+
+
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
@@ -52,8 +60,11 @@ function Sidebar() {
             <Nav>
                
             </Nav>
+            
             <SidebarNav sidebar={sidebar}>
+            <AppLogo src={MandiriLogo} alt="Mandiri" />
                 <SidebarWrap>
+                    
                <P>  main menu</P>
                     {SidebarData.map((item,index) =>{
                         return <SubMenu item={item} key={index}/>

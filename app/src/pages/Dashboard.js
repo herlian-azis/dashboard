@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
 import CardItem from '../components/CardItem'
-import Search from '../components/Search'
 import Calender from '../components/Calender'
 
 
@@ -31,6 +30,10 @@ justify-content: space-between;
 
 const P = styled.p`
 margin: 2px 1px;
+font-size: 18px
+`
+const H1 = styled.h1`
+margin: 2px 1px;
 `
 const Dashboard = () => {
 
@@ -38,21 +41,23 @@ const Dashboard = () => {
     return (
         <>
             <Wrap>
+                
                 <TitleWrap>
                     <p>
 
-                    Dashboard
+                        Dashboard
                     </p>
-                    <Calender/>
+                    <Calender />
                 </TitleWrap>
-            <Title/>
+                <Title />
                 <Column col="3">
 
                     <CardItem >s</CardItem>
                     <CardItem>d</CardItem>
                     <CardItem color="#FFCB2B" >
-                        <P> 522
-                </P>
+                            <H1>
+                                522
+                                </H1>
                         <P>
                             Umkm Tidak Aktif</P></CardItem>
                     <CardItem></CardItem>

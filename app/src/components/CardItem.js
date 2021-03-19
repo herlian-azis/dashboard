@@ -2,10 +2,10 @@ import react from 'react'
 import styled from 'styled-components'
 
 const  Card = styled.div`
-    height: 70px;
+    height: 100px;
     background-color: ${(props) => (props.color ? props.color : "#0070fb" )};
     padding: 0.8rem;
-    margin: 1rem
+    margin:  ${(props) => (props.margin ? props.margin : "10px" )}
 
 `
 const Container = styled.div`

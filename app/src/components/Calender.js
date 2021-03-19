@@ -36,7 +36,7 @@ const time =(d ) =>{
      
 }
     return (
-        <div>
+        <div style={{marginRight:"20px"}}>
             {/* <RangePicker size={"small"}
                 picker="month"
                 defaultValue={[
