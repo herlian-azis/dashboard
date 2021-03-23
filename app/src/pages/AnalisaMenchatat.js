@@ -1,27 +1,29 @@
-import React,{createRef} from 'react'
-import Pdf from "react-to-pdf";
+import React from 'react'
+import { Row, Col, Button, Divider, Card } from 'antd'
 
-const ref = createRef();
+const Box = () =>{
+  
 
+}
 
 
 const AnalisaMenchatat = () => {
-    return (
-        <div>
-            <center>
-            <Pdf targetRef={ref} filename="code-example.pdf" x={10} y={1} >
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf>
-            </center>
-      <div ref={ref} style={{marginLeft:"20rem"}}>
-      <div  >
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
-            AnalisaMenchatat
-      </div>
-      </div>
-        </div>
-    )
+  return (
+    <>
+      <Row justify={"space-between"}>
+        <Col>Analisa Menchatat UMKM</Col>
+        <Col><Button>Export</Button></Col>
+      </Row>
+      <Divider />
+      <Row gutter={[24, 24]}>
+  
+  <Col span={8}>
+      <Card style={{width:"346px", height:'111px'}}>tes</Card>
+    </Col>
+    
+</Row>
+    </>
+  )
 }
 
 export default AnalisaMenchatat

@@ -1,5 +1,7 @@
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -51,5 +53,10 @@
 
 .ant-menu-inline .ant-menu-item::after {
   border-right: 0 !important;
+  
+}
+.ant-menu-inline{
+  border-right: 0 !important;
 
 }
+

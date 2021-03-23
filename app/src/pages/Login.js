@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
+import MandiriBlue from '../image/MandiriBlue.svg';
+import Logo from '../image/ChatatLogo.svg';
+import { Row, Col, Image } from 'antd'
 
 import axios from 'axios'
 
@@ -24,7 +27,7 @@ background-color: #f5f6fa !important;
   border-radius: 5px !important;
   border: 1px solid #dbdfea;
     padding: 50px 60px;
-  width: 398px;
+  width: 539px;
   @media (max-width: 520px) {
     flex-direction: column;
   }
@@ -63,21 +66,21 @@ const Input = styled.input`
 width: 100%;
 padding: 5px 10px;
 font-size: 13px;
-height: 15px;
+height: 30px;
 
 `
 const PasswordInput = styled.input`
 width: 100%;
 padding: 5px 10px;
 font-size: 13px;
-height: 15px;
+height: 30px;
 
 `
 
 
 const Icons = styled.div`
 padding: 6px;
-  height: 18px;
+  height: 30px;
 background: #dbdfea;
 `
 
@@ -100,7 +103,6 @@ cursor: pointer;
 `
 const PositionButton = styled.div`
 position: relative;
-left: 23px;
 
 `
 
@@ -178,6 +180,7 @@ const Login = () => {
 
     axios(config)
       .then((response) => {
+        console.log(response)
         localStorage.setItem('auth', response.data.data.auth)
         localStorage.setItem('email', response.data.data.email)
         history.push(`/dashboard`)
@@ -202,11 +205,15 @@ const Login = () => {
 
       <LoginWrapper>
         <LoginWrapper2>
+          <center>
+
+            <Image width={300} height={150} preview={false} src={MandiriBlue} />
+          </center>
           <LoginCard>
             <LoginHead>
               <h2> silahkan login dahulu</h2>
             </LoginHead>
-              {alert && <h4 style={{color: "red"}} >  {msg}</h4>}
+            {alert && <h4 style={{ color: "red" }} >  {msg}</h4>}
             <FormLoginGroub onSubmit={(e) => goSubmit(e)}>
               <FormLabel>
                 E-mail
@@ -254,8 +261,16 @@ const Login = () => {
               <ButtonLogin className="primary"> Sign In</ButtonLogin>
             </FormLoginGroub>
           </LoginCard>
-        </LoginWrapper2>
 
+            <Row style={{marginTop:"20px",width:"100%"}} justify={'center'}>
+              <Col style={{marginTop:"5px" ,marginRight:"5px"}}>
+              Powered By
+              </Col>
+              <Col>
+              <Image src={Logo} width={125} preview={false} />
+              </Col>
+            </Row>
+        </LoginWrapper2>
       </LoginWrapper>
     </div>
   )

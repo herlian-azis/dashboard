@@ -58,9 +58,7 @@ function Sidebar() {
     return (
         <>
             <Nav>
-               
             </Nav>
-            
             <SidebarNav sidebar={sidebar}>
             <AppLogo src={MandiriLogo} alt="Mandiri" />
                 <SidebarWrap>

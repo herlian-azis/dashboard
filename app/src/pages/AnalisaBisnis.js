@@ -9,7 +9,6 @@ import { DownloadOutlined } from '@ant-design/icons';
 
 const Wrap = styled.div`
 width: auto;
-margin-left: 16rem;
 position: relative;
 padding: 0 4rem;
 `;

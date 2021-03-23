@@ -6,7 +6,6 @@ import Calender from '../components/Calender'
 
 const Wrap = styled.div`
 width: auto;
-margin-left: 16rem;
 position: relative;
 padding: 0 4rem;
 `;

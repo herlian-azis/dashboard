@@ -11,9 +11,10 @@ import {
   Login
 } from './pages'
 import Search from './components/Search'
-import { Layout, Menu, Avatar, Row, Col, Divider } from 'antd';
-import { ArrowRightOutlined, StarFilled, StarTwoTone } from '@ant-design/icons';
+import { Layout, Menu, Avatar, Row, Col, Divider, Image } from 'antd';
+import { ArrowRightOutlined, StarFilled, StarTwoTone ,ArrowLeftOutlined } from '@ant-design/icons';
 import LogoMandiri from './image/Mandiri_logo.svg'
+import Logo from './image/ChatatLogo.svg'
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -29,6 +30,8 @@ const App = () => {
 
       <Router>
         {/* {loginCheck()} */}
+        <Route exact path="/" component={Login} />
+
         <Layout style={{ minHeight: '100vh' }}>
           <Sider width={270} style={{ padding: '1rem', backgroundColor: backgroundColor }} >
             <div style={{ marginBottom: '10px', height: '46px', width: '160px', backgroundColor: backgroundColor }}>
@@ -57,56 +60,65 @@ const App = () => {
                   style={{ color: 'white', fontSize: '15px', textDecoration: "none" }}
                   to="/dashboard"
                 >
-                  <p>Dashboard</p>
                 </Link>
+                <p>Dashboard</p>
               </Menu.Item>
               <Menu.Item key='2' style={{ marginTop: '10px', color: 'white', fontSize: '15px' }}>
                 <Link
                   style={{ color: 'white', fontSize: '15px', textDecoration: "none" }}
                   to="/data-umkm"
                 >
-                  <p>Data UMKM</p>
                 </Link>
+                <p>Data UMKM</p>
               </Menu.Item>
               <Menu.Item key='3' style={{ marginTop: '10px', color: 'white', fontSize: '15px' }}>
                 <Link
                   style={{ color: 'white', fontSize: '15px', textDecoration: "none" }}
                   to="/analisa-bisnis"
                 >
-                  <p>Analisa Bisnis</p>
                 </Link>
+                <p>Analisa Bisnis</p>
               </Menu.Item>
               <Menu.Item key='4' style={{ marginTop: '10px', color: 'white', fontSize: '15px' }}>
                 <Link
                   style={{ color: 'white', fontSize: '15px', textDecoration: "none" }}
                   to="/analisa-menchatat"
                 >
-                  <p>Analisa Menchatat</p>
                 </Link>
+                <p>Analisa Menchatat</p>
               </Menu.Item>
               <Menu.Item key='5' style={{ marginTop: '10px', color: 'white', fontSize: '15px' }}>
                 <Link
                   style={{ color: 'white', fontSize: '15px', textDecoration: "none" }}
                   to="/data-voucher"
                 >
-                  <p>Data Voucher</p>
                 </Link>
+                <p>Data Voucher</p>
               </Menu.Item>
               <Menu.Item key='6' style={{ marginTop: '10px', color: 'white', fontSize: '15px' }}>
                 <Link
                   style={{ color: 'white', fontSize: '15px', textDecoration: "none" }}
                   to="/setting"
                 >
-                  <p>Setting</p>
                 </Link>
+                <p>Setting</p>
               </Menu.Item>
             </Menu>
           </Sider>
           <Layout>
-            <Header style={{ backgroundColor: "white", color: backgroundColor, boxShadow: '2px 2px 5px grey' }}>Header</Header>
+            <Header style={{ backgroundColor: "white", color: backgroundColor, boxShadow: '2px 2px 5px grey' }}>
+              <Row justify={"space-between"}>
+                <Col> <ArrowLeftOutlined/> Back</Col>
+                <Col>
+                <Image width={200}
+                src={Logo} preview={false}/>
+                </Col>
+
+              </Row>
+
+            </Header>
             <Content style={{ padding: '60px 40px' }}>
               <Switch>
-                <Route exact path="/" component={Login} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/data-umkm" component={DataUmkm} />
                 <Route exact path="/analisa-bisnis" component={AnalisaBisnis} />

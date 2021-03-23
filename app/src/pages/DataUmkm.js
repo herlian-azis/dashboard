@@ -16,7 +16,6 @@ const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const Wrap = styled.div`
 width: auto;
-margin-left: 16rem;
 position: relative;
 padding: 0 4rem;
 `;
@@ -41,10 +40,7 @@ justify-content: space-between;
 const P = styled.p`
 margin: 2px 1px;
 `
-const Container = styled.div`
-margin-left: 16rem;
 
-`
 
 const columns = [
     {
@@ -122,22 +118,22 @@ const DataUmkm = () => {
 
                     <TitleWrap>
                         <p>     Data UMKM</p>
-                    <ExcelFile filename="data-umkm"
-                        element={
-                            <Button icon={<DownloadOutlined />} style={{ background: "#FFCB2B", color: "black", borderColor: "#FFCB2B" }} >
-                                export to XLSX
+                        <ExcelFile filename="data-umkm"
+                            element={
+                                <Button icon={<DownloadOutlined />} style={{ background: "#FFCB2B", color: "black", borderColor: "#FFCB2B" }} >
+                                    export to XLSX
                    </Button>
-                        }
+                            }
                         >
-                        <ExcelSheet data={data} name="Employees"  >
-                            <ExcelColumn label="Name" value="name" />
-                            <ExcelColumn label="chinese" value="chinese" />
-                            <ExcelColumn label="math" value="math" />
-                            <ExcelColumn label="english" value="english" />
-                        </ExcelSheet>
-                    </ExcelFile>
+                            <ExcelSheet data={data} name="Employees"  >
+                                <ExcelColumn label="Name" value="name" />
+                                <ExcelColumn label="chinese" value="chinese" />
+                                <ExcelColumn label="math" value="math" />
+                                <ExcelColumn label="english" value="english" />
+                            </ExcelSheet>
+                        </ExcelFile>
 
-                        </TitleWrap>
+                    </TitleWrap>
                 </Title>
 
                 <Column col="3">
@@ -150,10 +146,8 @@ const DataUmkm = () => {
                 </Column>
             </Wrap>
 
-            <Container>
 
                 <Table columns={columns} dataSource={data} onChange={onChange} />
-            </Container>
         </>
     )
 }
