@@ -10,14 +10,13 @@ import {
   Setting,
   Login
 } from './pages'
-import Search from './components/Search'
-import { Layout, Menu, Avatar, Row, Col, Divider, Image } from 'antd';
-import { ArrowRightOutlined, StarFilled, StarTwoTone ,ArrowLeftOutlined } from '@ant-design/icons';
+import { Layout, Menu, Avatar, Row, Col, Divider, Image, Input } from 'antd';
+import { ArrowRightOutlined, StarFilled, StarTwoTone, ArrowLeftOutlined } from '@ant-design/icons';
 import LogoMandiri from './image/Mandiri_logo.svg'
 import Logo from './image/ChatatLogo.svg'
 
 const { Header, Footer, Sider, Content } = Layout;
-
+const { Search } = Input
 const backgroundColor = "#002F79"
 const backgroundColor2 = "#FFCB05"
 
@@ -107,11 +106,19 @@ const App = () => {
           </Sider>
           <Layout>
             <Header style={{ backgroundColor: "white", color: backgroundColor, boxShadow: '2px 2px 5px grey' }}>
-              <Row justify={"space-between"}>
-                <Col> <ArrowLeftOutlined/> Back</Col>
-                <Col>
-                <Image width={200}
-                src={Logo} preview={false}/>
+              <Row justify="space-between" align="middle" style={{ width: "100%" }}>
+                <Col> <ArrowLeftOutlined /> Back</Col>
+                <Col >
+                  <Row align="middle">
+
+                    Powered By
+                    <Image width={100} 
+                      src={Logo} preview={false} />
+
+                    <Search placeholder="input search text" allowClear
+                      //  onSearch={onSearch} 
+                      style={{ width: 200 ,marginLeft:20 }} />
+                  </Row>
                 </Col>
 
               </Row>
@@ -129,7 +136,7 @@ const App = () => {
                 {/* <Route exact path="/calender" component={Calender} /> */}
               </Switch>
             </Content >
-            <Footer>Footer</Footer>
+            {/* <Footer>Footer</Footer> */}
           </Layout>
         </Layout>
 
