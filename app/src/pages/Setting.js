@@ -1,25 +1,34 @@
-import React from 'react'
-import { Row, Col, Card, Layout ,Button} from 'antd';
+import React, { createRef } from 'react'
+import { Row, Col, Card, Layout, Button } from 'antd';
+import Pdf from "react-to-pdf";
+
 
 const Setting = () => {
+  const ref = createRef();
+  const options = {
+    orientation: 'landscape',
+
+  };
   return (
-    <Layout>
+    <Layout >
       <Card style={{ padding: '10px' }}>
 
-        <Row>
-          <Row justify={'space-between'} style={{width:'100%'}}>
+        <Row ref={ref}>
+          <Row justify={'space-between'} style={{ width: '100%' }}>
             <Col>Peridode 2020 2020</Col>
-            <Button type="primary" shape="round">Download</Button>
-           
+            <Pdf options={options} targetRef={ref} filename="code-example.pdf" x={15} scale={0.9}>
+              {({ toPdf }) => <Button type="primary" onClick={toPdf} shape="round">Download</Button>}
+            </Pdf>
+
           </Row>
           <Row>
             <Col>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+              Laporan yang mencatat informasi mengenai harta bisnis kamu. utang pada pihak-pihak yang terkait dalam operasional usaha, serta modal pada saat tertentu
           </Col>
           </Row>
-          <Row>
+          <Row style={{ marginTop: 20 }}>
             <Col>
-              <Card style={{ width: '500px' ,marginRight:"3rem"}}>
+              <Card style={{ width: '500px', marginRight: "3rem" }}>
                 <div >
                   <h1 style={{ padding: '10px 40px' }}>Harta</h1>
                   <div style={{ padding: '10px 40px' }}>
@@ -27,11 +36,11 @@ const Setting = () => {
               </div>
                   <Row style={{ width: '100%', backgroundColor: "#F9FAFB", padding: '10px 40px' }} justify={'space-between'}>
                     <Col >Kas kecil</Col>
-                    <Col>5000000000</Col>
+                    <Col >5.000.000.000</Col>
                   </Row>
                   <Row style={{ width: '100%', padding: '10px 40px' }} justify={'space-between'}>
                     <Col >Total Kas</Col>
-                    <Col>5000000000</Col>
+                    <Col style={{ color: "#5C9DFF" }}>5.000.000.000</Col>
                   </Row>
                   <div style={{ padding: '10px 40px' }}>
                     Piutang
@@ -83,7 +92,8 @@ const Setting = () => {
                   </Row>
                   <Row style={{ width: '100%', padding: '10px 40px', backgroundColor: "#F9FAFB" }} justify={'space-between'}>
                     <Col >Total Harta</Col>
-                    <Col>5000000000</Col>
+                    <Col style={{ color: "#5C9DFF" }}>5.000.000.000</Col>
+
                   </Row>
 
                 </div>
@@ -119,7 +129,7 @@ const Setting = () => {
                 </Row>
 
               </Card>
-              <Card style={{ width: '500px' , marginTop: '2rem' }}>
+              <Card style={{ width: '500px', marginTop: '2rem' }}>
                 <h1 style={{ padding: '10px 40px' }}>Modal</h1>
                 <Row style={{ width: '100%', padding: '10px 40px', backgroundColor: "#F9FAFB" }} justify={'space-between'}>
                   <Col >Laba Ditahan </Col>

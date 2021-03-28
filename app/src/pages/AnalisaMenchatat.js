@@ -1,10 +1,7 @@
 import React from 'react'
-import { Row, Col, Button, Divider, Card, Layout ,Table} from 'antd'
+import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd'
 
-const Box = () => {
-
-
-}
+import Bag from '../image/Bag2.svg'
 
 const backgroundColor = "#002F79"
 const backgroundColor2 = "#FFCB05"
@@ -104,37 +101,48 @@ const AnalisaMenchatat = () => {
 
           <Col span={8}>
             <Card style={{ width: "346px", height: '111px', backgroundColor: backgroundColor, color: 'white' }}>
-              <Row style={{ fontSize: "30px" }}>
-                4100
-        </Row>
-              <Row>
-                UMKM Terdaftar
-        </Row>
+              <Row align={"middle"} justify={"space-between"}>
+
+                <Col>
+                  <Row style={{ fontSize: "30px" }}> 2312</Row>
+                  <Row> UMKM  Terdaftar</Row>
+                </Col>
+                <Col>
+                  <Image src={Bag} width={50} />
+                </Col>
+              </Row>
+
             </Card>
           </Col>
           <Col span={8}>
             <Card style={{ width: "346px", height: '111px', backgroundColor: backgroundColor, color: 'white' }}>
-              <Row style={{ fontSize: "30px" }}>
-                3000
-        </Row>
-              <Row>
-                UMKM Aktif Mencatat
-        </Row>
+              <Row align={"middle"} justify={"space-between"}>
+                <Col>
+                  <Row style={{ fontSize: "30px" }}> 3000</Row>
+                  <Row> UMKM Aktif Mencatat</Row>
+                </Col>
+                <Col>
+                  <Image src={Bag} width={50} />
+                </Col>
+              </Row>
             </Card>
           </Col>
           <Col span={8}>
-            <Card style={{ width: "346px", height: '111px', backgroundColor: backgroundColor2, color: backgroundColor }}>
-              <Row style={{ fontSize: "30px" }}>
-                5000
-        </Row>
-              <Row>
-                UMKM Tidak Aktif
-        </Row>
+            <Card style={{ width: "346px", height: '111px', backgroundColor: backgroundColor2, color: backgroundColor }}> 
+              <Row align={"middle"} justify={"space-between"}>
+                <Col>
+                  <Row style={{ fontSize: "30px" }}> 5000</Row>
+                  <Row>  UMKM Tidak Aktif</Row>
+                </Col>
+                <Col>
+                  <Image src={Bag} width={50} />
+                </Col>
+              </Row>
             </Card>
           </Col>
         </Row>
-        <Card  style={{marginTop:20}}>
-            <Table columns={columns} dataSource={data} onChange={onChange} />
+        <Card style={{ marginTop: 20 }}>
+          <Table columns={columns} dataSource={data} onChange={onChange} />
 
         </Card>
       </Layout>

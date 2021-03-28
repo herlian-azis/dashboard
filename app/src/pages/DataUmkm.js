@@ -1,45 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import CardItem from '../components/CardItem'
-import { Table } from "antd";
 import ReactExport from "react-export-excel";
-import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
+import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd'
+import Bag from '../image/Bag2.svg'
 
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
+const dummy = [
+    { name: "UMKM Terdaftar", Total: "10,600"  }, { name: "UMKM Aktif Mendaftar", Total: "400,600" }, { name: "UMKM Tidak Aktif", Total: "4,600" },
+]
 
 
-
-const Wrap = styled.div`
-width: auto;
-position: relative;
-padding: 0 4rem;
-`;
-
-const Column = styled.div`
-display: grid;
-grid-template-columns: repeat(
-  ${(props) => (props.col ? props.col : "1")},
-  1fr
-);
-grid-gap: 10px;
-
-`
-
-const Title = styled.div`
-border-bottom: 1px solid grey
-`
-const TitleWrap = styled.div`
-display: flex;
-justify-content: space-between;
-`
-const P = styled.p`
-margin: 2px 1px;
-`
 
 
 const columns = [
@@ -111,44 +86,55 @@ function onChange(pagination, filters, sorter, extra) {
 
 
 const DataUmkm = () => {
+    const backgroundColor = "#002F79"
+    const backgroundColor2 = "#FFCB05"
     return (
-        <>
-            <Wrap>
-                <Title>
+        <Layout>
 
-                    <TitleWrap>
-                        <p>     Data UMKM</p>
-                        <ExcelFile filename="data-umkm"
-                            element={
-                                <Button icon={<DownloadOutlined />} style={{ background: "#FFCB2B", color: "black", borderColor: "#FFCB2B" }} >
-                                    export to XLSX
-                   </Button>
-                            }
-                        >
-                            <ExcelSheet data={data} name="Employees"  >
-                                <ExcelColumn label="Name" value="name" />
-                                <ExcelColumn label="chinese" value="chinese" />
-                                <ExcelColumn label="math" value="math" />
-                                <ExcelColumn label="english" value="english" />
-                            </ExcelSheet>
-                        </ExcelFile>
+            <Row justify={"space-between"}>
+                <Col>Data UMKM</Col>
+                <Col>
+                    <ExcelFile filename="data-umkm"
+                        element={
+                            <Button icon={<DownloadOutlined />} style={{ background: "#FFCB2B", color: "black", borderColor: "#FFCB2B" }} >
+                                export to XLSX</Button>
+                        }
+                    >
+                        <ExcelSheet data={data} name="Employees"  >
+                            <ExcelColumn label="Name" value="name" />
+                            <ExcelColumn label="chinese" value="chinese" />
+                            <ExcelColumn label="math" value="math" />
+                            <ExcelColumn label="english" value="english" />
+                        </ExcelSheet>
+                    </ExcelFile>
+                </Col>
+            </Row>
+            <Divider />
+            <Row gutter={[24, 24]}>
 
-                    </TitleWrap>
-                </Title>
+                {dummy.map((data ,i) =>{
 
-                <Column col="3">
-                    <CardItem />
-                    <CardItem />
-                    <CardItem color="#FFCB2B"> <P> 522
-                </P>
-                        <P>
-                            Umkm Tidak Aktif</P></CardItem>
-                </Column>
-            </Wrap>
-
-
+              return  (<Col span={8} key={i}>
+                    <Card style={{ width: "346px", height: '111px', backgroundColor: i==2 ? backgroundColor2 : backgroundColor, color:  i==2 ? backgroundColor :"white" }}>
+                        <Row align={"middle"} justify={"space-between"}>
+                            <Col>
+                                <Row style={{ fontSize: "30px" }}> {data.Total}</Row>
+                                <Row>  {data.name}</Row>
+                            </Col>
+                            <Col>
+                                <Image src={Bag} width={50} />
+                            </Col>
+                        </Row>
+                    </Card>
+                </Col>)
+                }) }
+            </Row>
+            <Card style={{ marginTop: 20 }}>
                 <Table columns={columns} dataSource={data} onChange={onChange} />
-        </>
+
+            </Card>
+        </Layout>
+
     )
 }
 

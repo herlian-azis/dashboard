@@ -1,73 +1,48 @@
 import React from 'react'
-import styled from "styled-components";
-import CardItem from '../components/CardItem'
+import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd'
+import Bag from '../image/Bag2.svg'
 import Calender from '../components/Calender'
 
 
-const Wrap = styled.div`
-width: auto;
-position: relative;
-padding: 0 4rem;
-`;
-const Column = styled.div`
-  display: grid;
-  grid-template-columns: repeat(
-    ${(props) => (props.col ? props.col : "1")},
-    1fr
-  );
-  grid-gap: 10px;
-`;
-
-const Title = styled.div`
-border-bottom: 1px solid grey
-`
-const TitleWrap = styled.div`
-display: flex;
-justify-content: space-between;
-
-`
-
-const P = styled.p`
-margin: 2px 1px;
-font-size: 18px
-`
-const H1 = styled.h1`
-margin: 2px 1px;
-`
 const Dashboard = () => {
+    const dummy = [
+        { name: "UMKM Terdaftar", Total: "10,600"  }, { name: "UMKM Aktif Mendaftar", Total: "400,600" }, { name: "UMKM Tidak Aktif", Total: "4,600" },
+        { name: "Total Aset UMKM", Total: "3,600" }, { name: "UMKM Kondisi Profit", Total: "99,300" }, { name: "UMKM Kondisi Rugi", Total: "4,600" },
+        { name: "Total Jumlah Transaksi", Total: "4,600" }, { name: "Total Jumlah Pemasukan", Total: "4,600" }, { name: "Total jumlah Pengeluaran", Total: "4,055" }
+    ]
 
+    const backgroundColor = "#003D79"
+    const backgroundColor2 = "#FFCB05"
 
     return (
-        <>
-            <Wrap>
-                
-                <TitleWrap>
-                    <p>
-
-                        Dashboard
-                    </p>
-                    <Calender />
-                </TitleWrap>
-                <Title />
-                <Column col="3">
-
-                    <CardItem >s</CardItem>
-                    <CardItem>d</CardItem>
-                    <CardItem color="#FFCB2B" >
-                            <H1>
-                                522
-                                </H1>
-                        <P>
-                            Umkm Tidak Aktif</P></CardItem>
-                    <CardItem></CardItem>
-                    <CardItem>s</CardItem>
-                    <CardItem color="#FFCB2B">d</CardItem>
-                    <CardItem>dasdas</CardItem>
-                    <CardItem></CardItem>
-                    <CardItem></CardItem>
-                </Column>
-            </Wrap>
-        </>
+        <Layout>
+            <Row justify={"space-between"}>
+                <Col>Dashboard</Col>
+                <Col><Calender/></Col>
+            </Row>
+            <Divider />
+            <Row gutter={[24, 24]}>
+                {
+                    dummy.map((data,i) => {
+                        return (
+                            <Col key={i} span={8}>
+                                <Card style={{ width: "346px", height: '111px', backgroundColor: i==2 || i==5 ? backgroundColor2 : backgroundColor , color: 'white' }}>
+                                    <Row align={"middle"} justify={"space-between"}>
+                                        <Col>
+                                            <Row style={{ fontSize: "30px" }}> {data.Total}</Row>
+                                            <Row>{data.name}</Row>
+                                        </Col>
+                                        <Col>
+                                            <Image src={Bag} width={50} />
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            </Col>
+                        )
+                    })
+                }
+            </Row>
+        </Layout>
     )
 }
 

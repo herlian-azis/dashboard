@@ -1,208 +1,129 @@
+import React from 'react'
+import ReactExport from "react-export-excel";
+import { DownloadOutlined } from '@ant-design/icons';
+import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd'
+import Bag from '../image/Bag2.svg'
 
-import { Option } from 'antd/lib/mentions';
-import React, { useState, useEffect, useRef } from 'react';
-import { Line, defaults } from 'react-chartjs-2';
-import styled from "styled-components";
-defaults.global.legend.align = 'start'
-// defaults.global.legend.labels.boxWidth = 20
 
-const labelState = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const datasetState = [{
-    label: 'Sales',
-    fill: false,
-    lineTension: 0.1,
-    backgroundColor: 'rgba(75,192,192,0.4)',
-    borderColor: 'rgba(75,192,192,1)',
-    borderCapStyle: 'butt',
-    borderDash: [],
-    borderDashOffset: 0.0,
-    borderJoinStyle: 'miter',
-    pointBorderColor: 'rgba(75,192,192,1)',
-    pointBackgroundColor: '#fff',
-    pointBorderWidth: 1,
-    pointStyle: 'cirlce',
-    pointHoverRadius: 5,
-    pointRadius: 4,
-    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-    pointHoverBorderColor: 'rgba(220,220,220,1)',
-    pointHoverBorderWidth: 2,
-    pointHitRadius: 10,
-    data: [65, 59, 80, 81, 56, 55, 40],
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
-}];
+const dummy = [
+    { name: "UMKM Terdaftar", Total: "10,600" }, { name: "UMKM Aktif Mendaftar", Total: "400,600" }, { name: "UMKM Tidak Aktif", Total: "4,600" },
+]
 
-function Graph() {
-    const [labels] = useState(labelState);
-    const [datasets, setDatasets] = useState(datasetState);
-    const interval = useRef();
 
-    useEffect(() => {
-        interval.current = setInterval(() => {
-            const oldDataSet = datasets[0];
-            const newData = [];
-
-            for (let x = 0; x < labels.length; x += 1) {
-                newData.push(Math.floor(Math.random() * 100));
-            }
-
-            const newDataSet = {
-                ...oldDataSet
-            };
-
-            newDataSet.data = newData;
-
-            setDatasets([newDataSet]);
-        }, 5000);
-        return () => {
-            clearInterval(interval.current);
-        };
-    }, []);
-
-    return (
-        <Line data={{ labels, datasets }} />
-    );
-}
-
-const Wrap = styled.div`
-width: auto;
-position: relative;
-padding: 0 4rem;
-`;
-
-const Box = styled.div`
-width: 70rem;
-border: 1px solid;
-margin-right: 10px;
-padding: 20px 10px 20px 30px
-`
-const Box2 = styled.div`
-width: 35rem;
-border: 1px solid;
-margin-right: 10px;
-padding: 10px 10px 10px 10px
-
-`
-const FlexWrap = styled.div`
-display: flex;
-`
-
-const Table = styled.table`
-&&& {
-    table,
-    th,
-    td {
-      border-collapse: collapse;
+const columns = [
+    {
+        title: "Nama Usaha",
+        dataIndex: "name"
+    },
+    {
+        title: "Chinese Score",
+        dataIndex: "chinese",
+        sorter: {
+            compare: (a, b) => a.chinese - b.chinese,
+            multiple: 3
+        }
+    },
+    {
+        title: "Math Score",
+        dataIndex: "math",
+        sorter: {
+            compare: (a, b) => a.math - b.math,
+            multiple: 2
+        }
+    },
+    {
+        title: "English Score",
+        dataIndex: "english",
+        sorter: {
+            compare: (a, b) => a.english - b.english,
+            multiple: 1
+        }
     }
-    th,
-    td,
-    tr {
-      padding: 20px;
+];
 
-    }
-    th {
-      text-align: left;
-
-    }
-    table {
-      width: 100%;
-    }
-  }
-`
-const WrapUl = styled.div`
-display: flex;
-justify-content: flex-start
-`
-const UlStyle = styled.ul`
-list-style-type: none;
-
-li:before { 
-    background-color: #14CCBB;
-    border-radius: 50%;
-    content: "";
-    display: inline-block;
-    margin-right: 8px;
-    margin-bottom: 2px;
-    margin-top: 25px;
-    height: 5px;
-    width: 5px;
-  }
-`
-const P1 = styled.p`
-margin: 0px 0px 0px 0px
-`
-const P = styled.p`
-margin: 7px 0px 0px 14px
-`
-const H3 = styled.h3`
-margin-left: 20px
-`
-const H1 = styled.h1`
-margin: 0px
-`
-
-
+const data = [
+    {
+        key: "1",
+        name: "John Brown",
+        chinese: 98,
+        math: 60,
+        english: 70
+    },
+    {
+        key: "2",
+        name: "Jim Green",
+        chinese: 98,
+        math: 66,
+        english: 89
+    },
+    {
+        key: "3",
+        name: "Joe Black",
+        chinese: 98,
+        math: 90,
+        english: 70
+    },
+    {
+        key: "4",
+        name: "Jim Red",
+        chinese: 88,
+        math: 99,
+        english: 89
+    },
+];
 const DataVoucher = () => {
+    const backgroundColor = "#002F79"
+    const backgroundColor2 = "#FFCB05"
     return (
-        <>
-            <Wrap>
-                DataVoucher
-            <FlexWrap>
-                    <Box>
+        <Layout>
 
-                        <H1>Sales / Omset Overview</H1>
-                        <P1>Grafik pergerakan omset usaha</P1>
-                        <Graph />
-                    </Box>
-                    <Box2>
-                        <UlStyle>
-                            <WrapUl>
-                                <div>
-                                    <li>
-                                        Total Sales
-                               </li>
-                                    <P>
-                                        IDR 95.000.000
-                               </P>
-                                </div>
-                                <div>
+            <Row justify={"space-between"}>
+                <Col>Data Voucher</Col>
+                <Col>
+                    <ExcelFile filename="data-umkm"
+                        element={
+                            <Button icon={<DownloadOutlined />} style={{ background: "#FFCB2B", color: "black", borderColor: "#FFCB2B" }} >
+                                export to XLSX</Button>
+                        }
+                    >
+                        <ExcelSheet data={data} name="Employees"  >
+                            <ExcelColumn label="Name" value="name" />
+                            <ExcelColumn label="chinese" value="chinese" />
+                            <ExcelColumn label="math" value="math" />
+                            <ExcelColumn label="english" value="english" />
+                        </ExcelSheet>
+                    </ExcelFile>
+                </Col>
+            </Row>
+            <Divider />
+            <Row gutter={[24, 24]}>
 
-                                    <li>
-                                        Number Of Transaction
-                               </li>
-                                    <P>
-                                        94
-                               </P>
-                                </div>
-                            </WrapUl>
-                        </UlStyle>`
-                        <H3>Top 3 Product Sales</H3>
-                        <Table>
-                            <tr>
-                                <th>product</th>
-                                <th>sales</th>
-                                <th>transaction</th>
-                            </tr>
-                            <tr>
-                                <td>paket Basic</td>
-                                <td>38.000</td>
-                                <td>38 </td>
+                {dummy.map((data, i) => {
 
-                            </tr>
-                            <tr>
-                                <td>paket Basic</td>
-                                <td> 8.000.000</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>paket Premium</td>
-                                <td> 8.000.000 </td>
-                                <td> 38</td>
-                            </tr>
-                        </Table>
-                    </Box2>
-                </FlexWrap>
-            </Wrap>
-        </>
+                    return (<Col span={8} key={i}>
+                        <Card style={{ width: "346px", height: '111px', backgroundColor: i == 2 ? backgroundColor2 : backgroundColor, color: i == 2 ? backgroundColor : "white" }}>
+                            <Row align={"middle"} justify={"space-between"}>
+                                <Col>
+                                    <Row style={{ fontSize: "30px" }}> {data.Total}</Row>
+                                    <Row>  {data.name}</Row>
+                                </Col>
+                                <Col>
+                                    <Image src={Bag} width={50} />
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Col>)
+                })}
+            </Row>
+            <Card style={{ marginTop: 20 }}>
+                <Table columns={columns} dataSource={data}  />
+
+            </Card>
+        </Layout>
     )
 }
 

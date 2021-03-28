@@ -8,7 +8,7 @@ import {
   AnalisaMenchatat,
   DataVoucher,
   Setting,
-  Login
+  Login,Chart
 } from './pages'
 import { Layout, Menu, Avatar, Row, Col, Divider, Image, Input } from 'antd';
 import { ArrowRightOutlined, StarFilled, StarTwoTone, ArrowLeftOutlined } from '@ant-design/icons';
@@ -132,6 +132,7 @@ const App = () => {
                 <Route exact path="/analisa-menchatat" component={AnalisaMenchatat} />
                 <Route exact path="/data-voucher" component={DataVoucher} />
                 <Route exact path="/setting" component={Setting} />
+                <Route exact path="/chart" component={Chart} />
                 {/* <Route exact path="/toast" component={Toast} /> */}
                 {/* <Route exact path="/calender" component={Calender} /> */}
               </Switch>
