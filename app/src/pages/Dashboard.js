@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd'
 import Bag from '../image/Bag2.svg'
 import Calender from '../components/Calender'
-
+import {useDispatch,useSelector} from 'react-redux'
+import { getUmkmTerdaftar } from '../redux/action/userAction'
 
 const Dashboard = () => {
     const dummy = [
@@ -10,15 +11,22 @@ const Dashboard = () => {
         { name: "Total Aset UMKM", Total: "3,600" }, { name: "UMKM Kondisi Profit", Total: "99,300" }, { name: "UMKM Kondisi Rugi", Total: "4,600" },
         { name: "Total Jumlah Transaksi", Total: "4,600" }, { name: "Total Jumlah Pemasukan", Total: "4,600" }, { name: "Total jumlah Pengeluaran", Total: "4,055" }
     ]
+    const [currentPage, setWaktu] = useState()
+    // const { getUmkmTerdaftar } = useSelector(state => state.userReducer)
+    const dispatch = useDispatch()
 
     const backgroundColor = "#003D79"
     const backgroundColor2 = "#FFCB05"
-
+    useEffect(() => {
+        
+        console.log(currentPage)
+    }, [dispatch, currentPage])
+    // getUmkmTerdaftar()
     return (
         <Layout>
             <Row justify={"space-between"}>
                 <Col>Dashboard</Col>
-                <Col><Calender/></Col>
+                <Col><Calender makan={"das"} waktu={page => setWaktu(page)}/></Col>
             </Row>
             <Divider />
             <Row gutter={[24, 24]}>

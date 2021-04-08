@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd'
+import { Row, Col, Button, Divider, Card, Layout, Table, Image } from 'antd' 
 
 import Bag from '../image/Bag2.svg'
 

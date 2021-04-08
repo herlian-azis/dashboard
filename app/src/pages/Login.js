@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import * as Icon from 'react-feather';
 import { Link } from 'react-router-dom'
@@ -6,8 +6,8 @@ import { useHistory } from 'react-router-dom';
 import MandiriBlue from '../image/MandiriBlue.svg';
 import Logo from '../image/ChatatLogo.svg';
 import { Row, Col, Image } from 'antd'
-
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUser } from '../redux/action/loginAction'
 
 
 
@@ -31,15 +31,12 @@ background-color: #f5f6fa !important;
   @media (max-width: 520px) {
     flex-direction: column;
   }
-  `
-
-
+`
 const LoginHead = styled.div`
   margin-bottom: 30px;
     padding-left: 10px;
     border-left: 4px solid #f6bd3d
-  `
-
+`
 const FormLoginGroub = styled.form`
 display: flex;
 flex-wrap: wrap;
@@ -49,19 +46,16 @@ margin-bottom: 20px;
 width: 100%;
 position: relative;
 `
-
 const FormLabel = styled.span`
 margin-bottom: 4px;
 display: inline-block
 `
-
 const FormField = styled.div`
 width: 100%;
 display: flex;
 margin: auto;
 
 `
-
 const Input = styled.input`
 width: 100%;
 padding: 5px 10px;
@@ -76,14 +70,11 @@ font-size: 13px;
 height: 30px;
 
 `
-
-
 const Icons = styled.div`
 padding: 6px;
   height: 30px;
 background: #dbdfea;
 `
-
 const IconsEmail = styled(Icon.Mail)`
 fill: white;
 width: 18px;
@@ -105,7 +96,6 @@ const PositionButton = styled.div`
 position: relative;
 
 `
-
 const ForgotButton = styled(Link)`
   font-size: 13px;
   line-height: 5px;
@@ -116,8 +106,6 @@ left: 310px;
 margin-bottom: 20px;
 
 `
-
-
 const ButtonLogin = styled.button`
 border-radius: 10px;
 padding: 10px 25px;
@@ -140,84 +128,47 @@ margin-bottom: 20px;
 
 const Login = () => {
   const history = useHistory()
-  var myHeaders = new Headers();
-
-  myHeaders.append("Authorization", "Bearer chatatID498327b5-b36d-48cc-82ef-975f13658eb0");
-  myHeaders.append("Content-Type", "application/json");
-
+  const dispatch = useDispatch()
+  const { error } = useSelector(state => state.errorHandling)
+  const { isLogin } = useSelector(state => state.loginReducer)
   const [input, setInput] = useState({
     email: "",
     password: ""
   })
-
   const [passwordShown, setPasswordShown] = useState(false);
-  const [alert, setAlert] = useState(false)
-  const [msg, setMsg] = useState("")
-
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
 
   const onChange = (e) => {
     let { name, value } = e.target
-
     const dataInput = { ...input, [name]: value }
     setInput(dataInput)
   }
-
+  useEffect(() => {
+    if (isLogin) history.push(`/dashboard`)
+  }, [isLogin, history])
+  console.log(isLogin)
   const goSubmit = (e) => {
     e.preventDefault()
-
-    var config = {
-      method: 'post',
-      url: 'https://azaradigital.com/service/sysBack/admin/login',
-      headers: {
-        'Authorization': 'Bearer chatatID498327b5-b36d-48cc-82ef-975f13658eb0',
-        'Content-Type': 'application/json'
-      },
-      data: input
-    };
-
-    axios(config)
-      .then((response) => {
-        console.log(response)
-        localStorage.setItem('auth', response.data.data.auth)
-        localStorage.setItem('email', response.data.data.email)
-        history.push(`/dashboard`)
-      })
-      .catch((error) => {
-        setAlert(false)
-        setMsg("")
-        setAlert(true)
-        if (error.response.data.message != undefined) {
-          setMsg(error.response.data.message);
-        } else if (error.response.data.password) {
-          setMsg(error.response.data.password.toString());
-        } else if (error.response.data.email != undefined)
-          setMsg(error.response.data.email[0]);
-      });
+    dispatch(loginUser(input))
   }
-
-
-
   return (
     <div>
-
       <LoginWrapper>
         <LoginWrapper2>
           <center>
-
             <Image width={300} height={150} preview={false} src={MandiriBlue} />
           </center>
           <LoginCard>
             <LoginHead>
               <h2> silahkan login dahulu</h2>
             </LoginHead>
-            {alert && <h4 style={{ color: "red" }} >  {msg}</h4>}
+            {error && <h4 style={{ color: "red" }} >  {error}</h4>}
             <FormLoginGroub onSubmit={(e) => goSubmit(e)}>
               <FormLabel>
                 E-mail
-                            </FormLabel>
+              </FormLabel>
               {/* Email form */}
               <FormField>
                 {/* /icons */}
@@ -243,37 +194,29 @@ const Login = () => {
                 <FormLogin>
                   <PasswordInput onChange={onChange} name="password" type={passwordShown ? "text" : "password"} placeholder="Password" />
                 </FormLogin>
-
                 <PositionButton>
-
                   <Icons>
                     <IconsSeePassword onClick={togglePasswordVisiblity} />
-
                   </Icons>
                 </PositionButton>
               </FormField>
               <ForgotButton>
                 Forgot a password?
-                            </ForgotButton>
-
-
-
+              </ForgotButton>
               <ButtonLogin className="primary"> Sign In</ButtonLogin>
             </FormLoginGroub>
           </LoginCard>
-
-            <Row style={{marginTop:"20px",width:"100%"}} justify={'center'}>
-              <Col style={{marginTop:"5px" ,marginRight:"5px"}}>
+          <Row style={{ marginTop: "20px", width: "100%" }} justify={'center'}>
+            <Col style={{ marginTop: "5px", marginRight: "5px" }}>
               Powered By
               </Col>
-              <Col>
+            <Col>
               <Image src={Logo} width={125} preview={false} />
-              </Col>
-            </Row>
+            </Col>
+          </Row>
         </LoginWrapper2>
       </LoginWrapper>
     </div>
   )
 }
-
 export default Login

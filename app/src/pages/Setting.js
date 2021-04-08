@@ -12,28 +12,26 @@ const Setting = () => {
   return (
     <Layout >
       <Card style={{ padding: '10px' }}>
-
         <Row ref={ref}>
           <Row justify={'space-between'} style={{ width: '100%' }}>
-            <Col>Peridode 2020 2020</Col>
+            <Col>periode february 2021 , March 2021 </Col>
             <Pdf options={options} targetRef={ref} filename="code-example.pdf" x={15} scale={0.9}>
               {({ toPdf }) => <Button type="primary" onClick={toPdf} shape="round">Download</Button>}
             </Pdf>
-
           </Row>
           <Row>
             <Col>
               Laporan yang mencatat informasi mengenai harta bisnis kamu. utang pada pihak-pihak yang terkait dalam operasional usaha, serta modal pada saat tertentu
-          </Col>
+            </Col>
           </Row>
           <Row style={{ marginTop: 20 }}>
             <Col>
               <Card style={{ width: '500px', marginRight: "3rem" }}>
-                <div >
+                <div>
                   <h1 style={{ padding: '10px 40px' }}>Harta</h1>
                   <div style={{ padding: '10px 40px' }}>
                     kas
-              </div>
+                </div>
                   <Row style={{ width: '100%', backgroundColor: "#F9FAFB", padding: '10px 40px' }} justify={'space-between'}>
                     <Col >Kas kecil</Col>
                     <Col >5.000.000.000</Col>
@@ -49,7 +47,6 @@ const Setting = () => {
                     <Col >Total Piutang</Col>
                     <Col>0</Col>
                   </Row>
-
                   <div style={{ padding: '10px 40px' }}>
                     Persediaan
                   </div>
@@ -93,9 +90,7 @@ const Setting = () => {
                   <Row style={{ width: '100%', padding: '10px 40px', backgroundColor: "#F9FAFB" }} justify={'space-between'}>
                     <Col >Total Harta</Col>
                     <Col style={{ color: "#5C9DFF" }}>5.000.000.000</Col>
-
                   </Row>
-
                 </div>
               </Card >
             </Col>
@@ -146,10 +141,7 @@ const Setting = () => {
           </Row>
         </Row>
       </Card>
-
     </Layout>
-
-
   )
 }
 
